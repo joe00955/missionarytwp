@@ -8,6 +8,7 @@ import {
   Crosshair,
   Zap,
   Layers,
+  Gift,
   User,
   Shield,
   ChevronRight,
@@ -18,6 +19,7 @@ const navItems = [
   { href: "/dashboard", label: "DASHBOARD", icon: LayoutDashboard },
   { href: "/missions", label: "MISSIONS", icon: Crosshair },
   { href: "/missions/active", label: "ACTIVE OPS", icon: Zap },
+  { href: "/rewards", label: "REWARDS", icon: Gift },
   { href: "/projects", label: "PROJECTS", icon: Layers },
   { href: "/profile", label: "PROFILE", icon: User },
 ];

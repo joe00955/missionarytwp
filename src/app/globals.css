@@ -115,3 +115,24 @@ input:-webkit-autofill:focus {
   color: rgba(255, 255, 255, 0.8);
   animation: glitch-2 0.4s linear;
 }
+
+/* Mythic rainbow border */
+@keyframes mythic-rainbow {
+  0% { border-color: #f0abfc; box-shadow: 0 0 20px rgba(240, 171, 252, 0.15), inset 0 0 20px rgba(240, 171, 252, 0.03); }
+  16% { border-color: #c084fc; box-shadow: 0 0 20px rgba(192, 132, 252, 0.15), inset 0 0 20px rgba(192, 132, 252, 0.03); }
+  33% { border-color: #818cf8; box-shadow: 0 0 20px rgba(129, 140, 248, 0.15), inset 0 0 20px rgba(129, 140, 248, 0.03); }
+  50% { border-color: #22d3ee; box-shadow: 0 0 20px rgba(34, 211, 238, 0.15), inset 0 0 20px rgba(34, 211, 238, 0.03); }
+  66% { border-color: #a78bfa; box-shadow: 0 0 20px rgba(167, 139, 250, 0.15), inset 0 0 20px rgba(167, 139, 250, 0.03); }
+  83% { border-color: #e879f9; box-shadow: 0 0 20px rgba(232, 121, 249, 0.15), inset 0 0 20px rgba(232, 121, 249, 0.03); }
+  100% { border-color: #f0abfc; box-shadow: 0 0 20px rgba(240, 171, 252, 0.15), inset 0 0 20px rgba(240, 171, 252, 0.03); }
+}
+
+.mythic-border {
+  border: 1px solid #c084fc;
+  animation: mythic-rainbow 4s linear infinite;
+}
+
+.mythic-glow:hover {
+  animation: mythic-rainbow 2s linear infinite;
+  box-shadow: 0 0 35px rgba(217, 70, 239, 0.2), 0 0 70px rgba(217, 70, 239, 0.08);
+}

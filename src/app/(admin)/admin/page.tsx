@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Users, Crosshair, ClipboardCheck, Activity } from "lucide-react";
+import { Users, Crosshair, ClipboardCheck, Gift, Activity } from "lucide-react";
 
 interface AdminStats {
   totalUsers: number;
@@ -110,6 +110,28 @@ export default function AdminDashboardPage() {
             </div>
             <div className="font-[family-name:var(--font-mono)] text-[10px] text-muted mt-1">
               {stats.pendingReviews} pending review{stats.pendingReviews !== 1 ? "s" : ""}
+            </div>
+          </Link>
+          <Link
+            href="/admin/rewards/new"
+            className="border border-border p-4 hover:border-white/30 transition-colors"
+          >
+            <div className="font-[family-name:var(--font-heading)] text-sm font-bold text-white">
+              CREATE REWARD
+            </div>
+            <div className="font-[family-name:var(--font-mono)] text-[10px] text-muted mt-1">
+              Add a new shop item
+            </div>
+          </Link>
+          <Link
+            href="/admin/rewards"
+            className="border border-border p-4 hover:border-white/30 transition-colors"
+          >
+            <div className="font-[family-name:var(--font-heading)] text-sm font-bold text-white">
+              MANAGE REWARDS
+            </div>
+            <div className="font-[family-name:var(--font-mono)] text-[10px] text-muted mt-1">
+              Shop items & pending claims
             </div>
           </Link>
         </div>

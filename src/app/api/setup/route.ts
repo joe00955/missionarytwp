@@ -125,6 +125,121 @@ export async function POST() {
       },
     });
 
+    // Sample rewards for the shop
+    const monthFromNow = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+    const twoMonths = new Date(now.getTime() + 60 * 24 * 60 * 60 * 1000);
+
+    await Promise.all([
+      prisma.reward.create({
+        data: {
+          title: "SINGULARITY PASS // All-Access Vacation Package",
+          description: "A fully paid vacation package for 2 to a destination of your choice. Flights, hotel, and spending money included. The ultimate reward for the ultimate missionary.",
+          tier: "MYTHIC",
+          cost: 25000,
+          category: "TRAVEL",
+          imageEmoji: "🌍",
+          stock: 1,
+          challenge: "You must have completed at least 50 approved missions AND hold the rank of Commander or higher. Submit a 500-word essay on what TWP means to you.",
+          expiresAt: twoMonths,
+          featured: true,
+          createdBy: admin.id,
+        },
+      }),
+      prisma.reward.create({
+        data: {
+          title: "PHANTOM PROTOCOL // $500 Cash Drop",
+          description: "$500 sent directly to your PayPal or bank account. No questions asked. Pure cash for your dedication.",
+          tier: "LEGENDARY",
+          cost: 10000,
+          category: "CASH",
+          imageEmoji: "💰",
+          stock: 3,
+          expiresAt: monthFromNow,
+          featured: true,
+          createdBy: admin.id,
+        },
+      }),
+      prisma.reward.create({
+        data: {
+          title: "FRONT ROW // Concert or Match Tickets",
+          description: "Two premium tickets to a concert, football match, or live event of your choice (up to $200 value per ticket).",
+          tier: "LEGENDARY",
+          cost: 8000,
+          category: "EXPERIENCE",
+          imageEmoji: "🎟️",
+          stock: 5,
+          expiresAt: twoMonths,
+          featured: false,
+          createdBy: admin.id,
+        },
+      }),
+      prisma.reward.create({
+        data: {
+          title: "ARSENAL DROP // Any Game of Your Choice",
+          description: "Any game on Steam, PlayStation, Xbox, or Nintendo eShop up to $70 value. Just tell us what you want.",
+          tier: "EPIC",
+          cost: 2000,
+          category: "GAMING",
+          imageEmoji: "🎮",
+          stock: -1,
+          expiresAt: monthFromNow,
+          createdBy: admin.id,
+        },
+      }),
+      prisma.reward.create({
+        data: {
+          title: "SUPPLY CACHE // $50 Gift Card",
+          description: "A $50 gift card to Amazon, Steam, or a store of your choice. Versatile and valuable.",
+          tier: "GOLD",
+          cost: 1500,
+          category: "PRODUCT",
+          imageEmoji: "🎁",
+          stock: -1,
+          expiresAt: monthFromNow,
+          createdBy: admin.id,
+        },
+      }),
+      prisma.reward.create({
+        data: {
+          title: "OPERATIVE GEAR // TWP Merch Bundle",
+          description: "Exclusive TWP hoodie, t-shirt, and sticker pack. Rep the project in the real world.",
+          tier: "SILVER",
+          cost: 500,
+          category: "PRODUCT",
+          imageEmoji: "👟",
+          stock: 20,
+          expiresAt: monthFromNow,
+          createdBy: admin.id,
+        },
+      }),
+      prisma.reward.create({
+        data: {
+          title: "SIGNAL BOOST // 1000 V-Bucks / Robux",
+          description: "1000 V-Bucks (Fortnite) or equivalent Robux (Roblox). Your choice of in-game currency.",
+          tier: "SILVER",
+          cost: 400,
+          category: "GAMING",
+          imageEmoji: "⚡",
+          stock: -1,
+          expiresAt: monthFromNow,
+          createdBy: admin.id,
+        },
+      }),
+      prisma.reward.create({
+        data: {
+          title: "FIELD RATION // $10 Gift Card",
+          description: "A quick $10 gift card to Amazon, Steam, or a store of your choice. Small but steady.",
+          tier: "BRONZE",
+          cost: 150,
+          category: "PRODUCT",
+          imageEmoji: "🃏",
+          stock: -1,
+          expiresAt: monthFromNow,
+          createdBy: admin.id,
+        },
+      }),
+    ]);
+
     return NextResponse.json({
       message: "Database seeded successfully!",
       accounts: {
@@ -132,6 +247,7 @@ export async function POST() {
         demo: { email: "missionary@twp.io", password: "demo123" },
       },
       missions: missions.length,
+      rewards: 8,
     });
   } catch (error) {
     console.error("Seed error:", error);

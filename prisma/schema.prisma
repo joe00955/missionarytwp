@@ -21,6 +21,7 @@ model User {
   updatedAt     DateTime       @updatedAt
   userMissions  UserMission[]
   notifications Notification[]
+  rewardClaims  RewardClaim[]
 }
 
 model Mission {
@@ -68,4 +69,36 @@ model Notification {
   metadata  String?  @db.Text
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Reward {
+  id            String        @id @default(cuid())
+  title         String
+  description   String        @db.Text
+  tier          String        // "BRONZE" | "SILVER" | "GOLD" | "EPIC" | "LEGENDARY" | "MYTHIC"
+  cost          Int
+  category      String        // "CASH" | "GAMING" | "TRAVEL" | "PRODUCT" | "EXPERIENCE" | "BUNDLE"
+  imageEmoji    String        @default("🎁") // emoji used as visual
+  stock         Int            @default(-1)   // -1 = unlimited
+  challenge     String?       @db.Text       // required challenge text for MYTHIC rewards
+  expiresAt     DateTime
+  featured      Boolean       @default(false)
+  createdBy     String
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  claims        RewardClaim[]
+}
+
+model RewardClaim {
+  id          String    @id @default(cuid())
+  userId      String
+  rewardId    String
+  status      String    @default("pending") // "pending" | "approved" | "rejected" | "fulfilled"
+  note        String?   @db.Text            // user message to admin
+  adminNote   String?   @db.Text            // admin response
+  pointsSpent Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reward      Reward    @relation(fields: [rewardId], references: [id], onDelete: Cascade)
 }

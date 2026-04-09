@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Crosshair, Zap, Layers, Trophy, Clock, ChevronRight } from "lucide-react";
+import { Crosshair, Zap, Layers, Gift, Trophy, Clock, ChevronRight } from "lucide-react";
 import { cn, timeUntil, getDifficultyColor } from "@/lib/utils";
 
 interface Mission {
@@ -187,7 +187,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <Link
           href="/missions"
           className="border border-border bg-surface p-4 hover:border-white/20 transition-colors flex items-center gap-3 group"
@@ -198,7 +198,21 @@ export default function DashboardPage() {
               BROWSE MISSIONS
             </div>
             <div className="font-[family-name:var(--font-mono)] text-[10px] text-muted">
-              Find new operations to accept
+              Find new operations
+            </div>
+          </div>
+        </Link>
+        <Link
+          href="/rewards"
+          className="border border-border bg-surface p-4 hover:border-white/20 transition-colors flex items-center gap-3 group"
+        >
+          <Gift size={20} className="text-muted group-hover:text-white transition-colors" />
+          <div>
+            <div className="font-[family-name:var(--font-heading)] text-sm font-bold text-white">
+              REWARDS SHOP
+            </div>
+            <div className="font-[family-name:var(--font-mono)] text-[10px] text-muted">
+              Spend your points
             </div>
           </div>
         </Link>
@@ -212,7 +226,7 @@ export default function DashboardPage() {
               PROJECTS
             </div>
             <div className="font-[family-name:var(--font-mono)] text-[10px] text-muted">
-              See what TWP is building
+              See what TWP builds
             </div>
           </div>
         </Link>

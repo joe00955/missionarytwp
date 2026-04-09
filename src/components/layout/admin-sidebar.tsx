@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Crosshair,
   ClipboardCheck,
+  Gift,
   Users,
   ArrowLeft,
 } from "lucide-react";
@@ -15,6 +16,7 @@ const adminNavItems = [
   { href: "/admin", label: "OVERVIEW", icon: LayoutDashboard, exact: true },
   { href: "/admin/missions", label: "MISSIONS", icon: Crosshair },
   { href: "/admin/reviews", label: "REVIEWS", icon: ClipboardCheck },
+  { href: "/admin/rewards", label: "REWARDS", icon: Gift },
   { href: "/admin/users", label: "USERS", icon: Users },
 ];
 
