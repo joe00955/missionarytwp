@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Crosshair, Zap, Trophy, Clock, ChevronRight } from "lucide-react";
+import { Crosshair, Zap, Layers, Trophy, Clock, ChevronRight } from "lucide-react";
 import { cn, timeUntil, getDifficultyColor } from "@/lib/utils";
 
 interface Mission {
@@ -203,16 +203,16 @@ export default function DashboardPage() {
           </div>
         </Link>
         <Link
-          href="/leaderboard"
+          href="/projects"
           className="border border-border bg-surface p-4 hover:border-white/20 transition-colors flex items-center gap-3 group"
         >
-          <Trophy size={20} className="text-muted group-hover:text-white transition-colors" />
+          <Layers size={20} className="text-muted group-hover:text-white transition-colors" />
           <div>
             <div className="font-[family-name:var(--font-heading)] text-sm font-bold text-white">
-              LEADERBOARD
+              PROJECTS
             </div>
             <div className="font-[family-name:var(--font-mono)] text-[10px] text-muted">
-              Check your ranking
+              See what TWP is building
             </div>
           </div>
         </Link>
