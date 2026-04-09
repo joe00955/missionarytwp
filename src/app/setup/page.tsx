@@ -21,7 +21,7 @@ export default function SetupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4 relative z-10">
       <div className="max-w-lg w-full">
         <div className="mb-8">
           <div className="font-[family-name:var(--font-mono)] text-xs text-[#737373] mb-2 tracking-widest">
