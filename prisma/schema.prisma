@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
 }
 
 model User {
@@ -26,8 +27,8 @@ model User {
 model Mission {
   id           String        @id @default(cuid())
   title        String
-  description  String
-  briefing     String
+  description  String        @db.Text
+  briefing     String        @db.Text
   points       Int
   difficulty   String        @default("STANDARD")
   category     String
@@ -47,11 +48,11 @@ model UserMission {
   acceptedAt    DateTime?
   submittedAt   DateTime?
   reviewedAt    DateTime?
-  submission    String?
-  reviewNote    String?
+  submission    String?   @db.Text
+  reviewNote    String?   @db.Text
   pointsAwarded Int       @default(0)
-  user          User      @relation(fields: [userId], references: [id])
-  mission       Mission   @relation(fields: [missionId], references: [id])
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mission       Mission   @relation(fields: [missionId], references: [id], onDelete: Cascade)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -62,10 +63,10 @@ model Notification {
   id        String   @id @default(cuid())
   userId    String
   title     String
-  message   String
+  message   String   @db.Text
   type      String
   read      Boolean  @default(false)
-  metadata  String?
+  metadata  String?  @db.Text
   createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
